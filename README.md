@@ -65,6 +65,7 @@ Then the former settemp will be stored and used for comparison of temperatures.
 
 NR Flows:
 The following flow can be copied and imported to node-red:
+
 https://github.com/tp1de/home-assistant-node-red-heatdemand/blob/76909f1e963174fb54bd8f2a0f0f714b45bee87c/flownr.txt
 
 ****
