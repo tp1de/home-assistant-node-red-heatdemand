@@ -2,7 +2,7 @@
 - token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 - outdoortemp_entity: sensor.boiler_outdoortemp
-- outdoortemp_threshold: 4
+- outdoortemp_threshold: 5
 
 - thermostats:
     
