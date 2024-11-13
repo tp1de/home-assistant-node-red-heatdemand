@@ -43,6 +43,10 @@ The following entries within hd.yaml:
                          true/false
 
 Example hd.yaml:
+hd.yaml
+
+
+
 - server: http://localhost:8123/api/
 - token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
