@@ -1,8 +1,7 @@
 This node-red flow is able to control the heating system with multiple heating circuits.
 The heating system could be integrated by the ems-esp gateway using mqtt or other ways of integration.
 
-The heat demand flow is able to decide if a heat demand for a boiler / heatpump is active by reading thermostat entities (actual temp vs. settemp)  
-and using parameters to switch a heating circuit on/off depending on the heatdemand discovered.
+The heat demand flow is able to decide if a heat demand for a boiler / heatpump is active by reading thermostat entities (actual temp vs. settemp) and using parameters to switch a heating circuit on/off depending on the heatdemand discovered.
 
 ***
 
