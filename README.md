@@ -1,14 +1,13 @@
-How to implement Node-red flow heatdemand processing
-within Home Assistant.
+This node-red flow is able to control the heating system with multiple heating circuits.
+The heating system could be integrated by the ems-esp gateway using mqtt or other ways of integration.
+
+The heat demand flow is able to decide if a heat demand for a boiler / heatpump is active by reading thermostat entities (actual temp vs. settemp)  
+and using parameters to switch a heating circuit on/off depending on the heatdemand discovered.
 
 ***
 
-
-The heat demand flow is able to decide if a heat demand for a boiler / heatpump is there by reading thermostat entities (actual vs. settemp)  and using parameters to switch a heating circuit on/off depending on heatdemand.
-
-
 The following technical prerequisites are needed:
-1.	Node-Red addon is installed and active.
+1.	HA Node-Red addon is installed and active.
 
 2.	MQTT Broker is installed and discovery prefix is set to standard “homeassistant”
 
@@ -17,10 +16,11 @@ The following technical prerequisites are needed:
 
 4.	a longterm api access token is generated in HA
 
-With these prerequisites the km200 data processing flow consists of:
+***
+
+With these prerequisites the data processing flow consists of:
 
 1. The Node-Red flow for heat demand:
-
  
 A configuration file hd.yaml has to exist in the config directory of HA.
 The following entries within hd.yaml:
@@ -30,17 +30,17 @@ The following entries within hd.yaml:
 4.	outdoortemp_threshold: hd active if outdoortemp is above threshold 
 
 5.	thermostats per room with entity, settemp and actualtemp
-deltam: defining minimum delta temp for heatdemand
-hc: heating circuit (hc1 to hc4)
-weight: weight of this thermostat
+- deltam: defining minimum delta temp for heatdemand
+- hc: heating circuit (hc1 to hc4)
+- weight: weight of this thermostat
 
 6.	heatingcircuits
-hc: hc1 to hc4
-weigthon and weigthoff
-state: for mqtt write
-entity: entity within HA
-on /off: writing values for hc on/off (-1= auto ; 0 = off)
-savesettemp: saving previous settemp for floorheating when overwritten by 0 (off):        
+- hc: hc1 to hc4
+- weigthon and weigthoff
+- state: for mqtt write
+- entity: entity within HA
+- on /off: writing values for hc on/off (-1= auto ; 0 = off)
+- savesettemp: saving previous settemp for floorheating when overwritten by 0 (off):        
                          true/false
 
 Example hd.yaml:
@@ -96,8 +96,6 @@ Flow Logic:
 Once on Start the heat demand entities are created by using mqtt discovery api calls.
 These entities are grouped under the device “Heatdemand” within mqtt integration:
 
- 
-
 Please note that entities are not automatically deleted when you change names. This has to be done using mqtt explorer or a similar tool.
 
 The heatdemand logic is described by:
@@ -115,7 +113,7 @@ NR Flows:
 The following flow can be copied and imported to node-red:
 
 
-
+****
 
 
 
