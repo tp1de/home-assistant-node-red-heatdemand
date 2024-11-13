@@ -5,6 +5,8 @@ within Home Assistant.
 
 
 The heat demand flow is able to decide if a heat demand for a boiler / heatpump is there by reading thermostat entities (actual vs. settemp)  and using parameters to switch a heating circuit on/off depending on heatdemand.
+
+
 The following technical prerequisites are needed:
 1.	Node-Red addon is installed and active.
 
