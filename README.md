@@ -44,6 +44,7 @@ The following entries within hd.yaml:
 
 Example hd.yaml: https://github.com/tp1de/home-assistant-node-red-heatdemand/blob/main/hd.yaml
 
+***
 
 Flow Logic:
 
@@ -51,17 +52,23 @@ Once on Start the heat demand entities are created by using mqtt discovery api c
 These entities are grouped under the device “Heatdemand” within mqtt integration:
 
 Please note that entities are not automatically deleted when you change names. This has to be done using mqtt explorer or a similar tool.
-
+.
+.
 The heatdemand logic is described by:
-For each thermostat actualtemp is compared to settemp. If (settemp-actualtemp) > deltam then there is a heatdemand for this thermostat / climatate entity. The demand is given by the weight.
+For each thermostat actualtemp is compared to settemp. 
+If (settemp-actualtemp) > deltam then there is a heatdemand for this thermostat / climatate entity. The demand value is given by the weight.
+When actualtemp is >= settemp the then demand for this thermostat is set to zero. 
+Please select deltam with care - This defines the correct hysteresis.
 
-All demands for all thermostats of one heating circuit (hc1 to hc2) is aggregated and compared to the parameters of the heating circuit. 
+All demands for all thermostats of one heating circuit are aggregated and compared to the parameters of the heating circuit. 
 If sum(weigths) >= weigthon then hc will be switched on using the on value. 
-Otherwise the hc will be switched off using the value for off.
+If sum(weigths) <= weigthoff then hc will be switched off using the off value. 
 
 For floorheating the change of settemp to off will overwrite the former settemp. 
 For floorheating savesettemp could be be then set to true. 
-Then the former settemp will be stored and used for comparison of temperatures. 
+In this case the former settemp will be stored and used for comparison of temperatures. 
+
+***
 
 NR Flows:
 The following flow can be copied and imported to node-red:
